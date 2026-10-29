@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拾頁書屋｜小說與漫畫</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", sans-serif;
+      background: #faf7f2;
+      color: #40372f;
+    }
+    header {
+      background: #604b3d;
+      color: white;
+      padding: 24px 8%;
+    }
+    header h1 { margin: 0 0 12px; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    main { padding: 32px 8%; }
+    .hero {
+      padding: 35px;
+      border-radius: 16px;
+      background: #eadbc9;
+      margin-bottom: 28px;
+    }
+    .hero h2 { font-size: 30px; }
+    input {
+      padding: 12px;
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid #c9b8a5;
+      border-radius: 8px;
+    }
+    .books {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .book {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+    .cover {
+      height: 150px;
+      display: grid;
+      place-items: center;
+      background: #eee1d1;
+      font-size: 52px;
+      border-radius: 8px;
+    }
+    .price { color: #a14e32; font-weight: bold; }
+    footer {
+      text-align: center;
+      padding: 24px;
+      background: #604b3d;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📚 拾頁書屋</h1>
+    <nav>
+      <a href="#home">首頁</a>
+      <a href="#books">小說與漫畫</a>
+      <a href="#about">關於我們</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <h2>翻開下一頁，遇見新世界。</h2>
+      <p>探索喜愛的小說、漫畫，找到屬於你的故事。</p>
+      <input id="search" placeholder="搜尋書名……">
+    </section>
+
+    <h2 id="books">熱門書籍</h2>
+    <div class="books" id="bookList">
+      <article class="book" data-name="奇幻小說">
+        <div class="cover">📖</div>
+        <h3>奇幻小說選集</h3>
+        <p>展開一場奇妙冒險。</p>
+        <p class="price">NT$320</p>
+      </article>
+      <article class="book" data-name="青春漫畫">
+        <div class="cover">🎨</div>
+        <h3>青春漫畫精選</h3>
+        <p>收藏每一個熱血瞬間。</p>
+        <p class="price">NT$180</p>
+      </article>
+      <article class="book" data-name="療癒散文">
+        <div class="cover">🌿</div>
+        <h3>療癒散文集</h3>
+        <p>在文字裡找到片刻寧靜。</p>
+        <p class="price">NT$260</p>
+      </article>
+    </div>
+
+    <section id="about">
+      <h2>關於拾頁書屋</h2>
+      <p>讓每一本書，都成為生活中的美好相遇。</p>
+    </section>
+  </main>
+
+  <footer>© 2026 拾頁書屋</footer>
+
+  <script>
+    const search = document.getElementById("search");
+    const books = document.querySelectorAll(".book");
+
+    search.addEventListener("input", () => {
+      const keyword = search.value.trim().toLowerCase();
+      books.forEach(book => {
+        book.style.display =
+          book.dataset.name.toLowerCase().includes(keyword)
+            ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
